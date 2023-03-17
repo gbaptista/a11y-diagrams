@@ -70,7 +70,7 @@ This project was built using the following technologies:
   - [Bootstrap Accessibility](https://getbootstrap.com/docs/5.3/getting-started/accessibility/)
 - Live In-Browser Code Editor: [Monaco](https://microsoft.github.io/monaco-editor/)
   - [Monaco Editor Accessibility Guide](https://github.com/microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide)
-- Syntax Highlighting: [Prism.js](https://prismjs.com)
 - Diagramming Language: [Mermaid](https://mermaid.js.org)
   - [Mermaid Accessibility Options](https://mermaid.js.org/config/accessibility.html)
   - [More Accessible Mermaid Charts #2732](https://github.com/mermaid-js/mermaid/issues/2732)
+- Syntax Highlighting: [Prism.js](https://prismjs.com)
