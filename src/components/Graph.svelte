@@ -1,34 +1,31 @@
 <script>
-import mermaidParser from '../parsers/mermaid/flowchart';
+  import mermaidParser from '../parsers/mermaid/flowchart';
 
-import Prism from 'prismjs';
-import 'prismjs/components/prism-json.min';
-import 'prismjs/themes/prism-okaidia.css';
-import 'prism-svelte';
+  import { onMount } from 'svelte';
 
-import { onMount } from 'svelte';
+  export let source;
 
-export let source;
+  let previousSource = undefined;
 
-let previousSource = undefined;
+  let graph;
 
-let graph;
+  const renderNavigator = async () => {
+    if (source === previousSource) return null;
 
-const renderNavigator = async () => {
-  if(source === previousSource) return null;
+    previousSource = source;
 
-  previousSource = source;
+    graph = mermaidParser.parse(source);
+  };
 
-  graph = mermaidParser.parse(source);
-};
+  onMount(async () => {
+    if (source !== undefined) await renderNavigator();
+  });
 
-onMount(async () => {
-  if (source !== undefined) await renderNavigator();
-});
-
-$: if(source !== undefined) { renderNavigator(); }
+  $: if (source !== undefined) {
+    renderNavigator();
+  }
 </script>
 
 {#if graph !== undefined}
-  <slot graph={graph}></slot>
+  <slot {graph} />
 {/if}

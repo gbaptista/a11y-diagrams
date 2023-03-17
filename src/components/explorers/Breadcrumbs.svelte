@@ -1,27 +1,33 @@
 <script>
-import { onMount } from 'svelte';
+  export let graph;
 
-export let graph;
+  let breadcrumb = {
+    at: performance.now(),
+    paths: []
+  };
 
-let breadcrumbs = [];
+  const buildBreadcrumbs = () => {
+    breadcrumb.paths = [];
 
-const buildBreadcrumbs = () => {
-  Object.keys(graph.nodes).forEach(nodeId => {
-    let path = graph.nodes[nodeId].label;
+    Object.keys(graph.nodes).forEach((nodeId) => {
+      let path = graph.nodes[nodeId].label;
 
-    Object.keys(graph.nodes[nodeId].edges).forEach(edgeId => {
-      const edge = graph.nodes[nodeId].edges[edgeId];
-      if(edge.direction !== '<') {
-        path = `${path} ${edge.direction} ${graph.nodes[edgeId].label}`;
-        breadcrumbs.push(path);
-        path = graph.nodes[nodeId].label;
-      }
+      Object.keys(graph.nodes[nodeId].edges).forEach((edgeId) => {
+        const edge = graph.nodes[nodeId].edges[edgeId];
+        if (edge.direction !== '<') {
+          path = `${path} ${edge.direction} ${graph.nodes[edgeId].label}`;
+          breadcrumb.paths.push(path);
+          path = graph.nodes[nodeId].label;
+        }
+      });
     });
-  })
-}
 
-buildBreadcrumbs();
+    breadcrumb.at = performance.now();
+  };
 
+  $: {
+    if (graph) buildBreadcrumbs();
+  }
 </script>
 
 {#if graph}
@@ -32,22 +38,21 @@ buildBreadcrumbs();
         <div class="col">
           <table class="table">
             <tbody>
-              {#each breadcrumbs as path}
+              {#each breadcrumb.paths as path}
                 <tr>
                   <td>{path}</td>
                 </tr>
               {/each}
             </tbody>
-          </table>    
+          </table>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 {/if}
 
-
 <style>
-.card {
-  margin-top: 2em;
-}
+  .card {
+    margin-top: 2em;
+  }
 </style>

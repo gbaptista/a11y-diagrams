@@ -35,6 +35,7 @@ npm install
 ```
 
 Run the project in development mode:
+
 ```bash
 npm run dev
 
@@ -42,8 +43,16 @@ npm run dev -- --open
 ```
 
 Running tests:
+
 ```sh
 npm run test:unit
+```
+
+Running linters:
+
+```sh
+npm run lint
+npm run format
 ```
 
 ## Building
@@ -59,7 +68,6 @@ You can preview the production build by running `npm run preview`.
 ## Technologies and References
 
 This project was built using the following technologies:
-
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), and [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
   - [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics)

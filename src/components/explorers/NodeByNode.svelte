@@ -1,14 +1,11 @@
 <script>
-import { onMount } from 'svelte';
+  export let graph;
 
-export let graph;
+  let focusNodeId = Object.keys(graph.nodes)[0];
 
-let focusNodeId = Object.keys(graph.nodes)[0];
-let focusNode = graph.nodes[focusNodeId];
-
-const goTo = (focusNodeId) => {
-  focusNode = graph.nodes[focusNodeId];
-}
+  const goTo = (newFocusNodeId) => {
+    focusNodeId = newFocusNodeId;
+  };
 </script>
 
 {#if graph}
@@ -21,41 +18,45 @@ const goTo = (focusNodeId) => {
             <tbody>
               <tr>
                 <th class="text-end" scope="row">Label:</th>
-                <td>{focusNode.label}</td>
+                <td>{graph.nodes[focusNodeId].label}</td>
               </tr>
               <tr>
                 <th class="text-end" scope="row">Edges:</th>
-                <td>{Object.keys(focusNode.edges).length}</td>
+                <td>{Object.keys(graph.nodes[focusNodeId].edges).length}</td>
               </tr>
               <tr>
                 <th class="text-end" scope="row">ID:</th>
-                <td>{focusNode.id}</td>
+                <td>{graph.nodes[focusNodeId].id}</td>
               </tr>
             </tbody>
-          </table>    
+          </table>
         </div>
         <div class="col">
-          {#each Object.keys(focusNode.edges) as id}
+          {#each Object.keys(graph.nodes[focusNodeId].edges) as id}
             <button
               on:click={goTo(id)}
               type="button"
-              class={`${focusNode.edges[id]['direction'] == '>' ? 'btn btn-primary' : 'btn btn-secondary'}`}>
+              class={`${
+                graph.nodes[focusNodeId].edges[id]['direction'] == '>'
+                  ? 'btn btn-primary'
+                  : 'btn btn-secondary'
+              }`}
+            >
               {graph.nodes[id].label}
             </button>
           {/each}
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 {/if}
 
-
 <style>
-.card {
-  margin-top: 2em;
-}
+  .card {
+    margin-top: 2em;
+  }
 
-button {
-  margin: .5em;
-}
+  button {
+    margin: 0.5em;
+  }
 </style>
