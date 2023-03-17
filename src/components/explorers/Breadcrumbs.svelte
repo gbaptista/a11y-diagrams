@@ -2,40 +2,43 @@
 import { onMount } from 'svelte';
 
 export let graph;
+
+let breadcrumbs = [];
+
+const buildBreadcrumbs = () => {
+  Object.keys(graph.nodes).forEach(nodeId => {
+    let path = graph.nodes[nodeId].label;
+
+    Object.keys(graph.nodes[nodeId].edges).forEach(edgeId => {
+      const edge = graph.nodes[nodeId].edges[edgeId];
+      if(edge.direction !== '<') {
+        path = `${path} ${edge.direction} ${graph.nodes[edgeId].label}`;
+        breadcrumbs.push(path);
+        path = graph.nodes[nodeId].label;
+      }
+    });
+  })
+}
+
+buildBreadcrumbs();
+
 </script>
 
 {#if graph}
   <div class="card">
-    <h5 class="card-header">Node By Node Explorer</h5>
+    <h5 class="card-header">Breadcrumbs Explorer</h5>
     <div class="card-body">
       <div class="row">
         <div class="col">
           <table class="table">
             <tbody>
-              <tr>
-                <th class="text-end" scope="row">Label:</th>
-                <td>{focusNode.label}</td>
-              </tr>
-              <tr>
-                <th class="text-end" scope="row">Edges:</th>
-                <td>{Object.keys(focusNode.edges).length}</td>
-              </tr>
-              <tr>
-                <th class="text-end" scope="row">ID:</th>
-                <td>{focusNode.id}</td>
-              </tr>
+              {#each breadcrumbs as path}
+                <tr>
+                  <td>{path}</td>
+                </tr>
+              {/each}
             </tbody>
           </table>    
-        </div>
-        <div class="col">
-          {#each Object.keys(focusNode.edges) as id}
-            <button
-              on:click={goTo(id)}
-              type="button"
-              class={`${focusNode.edges[id]['direction'] == '>' ? 'btn btn-primary' : 'btn btn-secondary'}`}>
-              {graph.nodes[id].label}
-            </button>
-          {/each}
         </div>
       </div>  
     </div>
@@ -46,9 +49,5 @@ export let graph;
 <style>
 .card {
   margin-top: 2em;
-}
-
-button {
-  margin: .5em;
 }
 </style>
