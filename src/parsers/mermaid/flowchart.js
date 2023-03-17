@@ -1,6 +1,6 @@
 class MermaidFlowchart {
   static parse(raw) {
-    const graph = {};
+    const nodes = {};
 
     const source = raw.replace(/\n/g, ';').replace('\s+', ' ');
 
@@ -10,28 +10,28 @@ class MermaidFlowchart {
         const a = this.parseItem(items[0]);
         const b = this.parseItem(items[1]);
 
-        this.ensureItem(graph, a);
-        this.ensureItem(graph, b);
-        this.connectItems(graph, a, b, '>');
+        this.ensureItem(nodes, a);
+        this.ensureItem(nodes, b);
+        this.connectItems(nodes, a, b, '>');
       }
     });
 
-    return graph;
+    return { nodes: nodes };
   }
 
-  static connectItems(graph, a, b, direction) {
-    graph[a.id].edges[b.id] = {
+  static connectItems(nodes, a, b, direction) {
+    nodes[a.id].edges[b.id] = {
       direction: direction
     }
 
-    graph[b.id].edges[a.id] = {
+    nodes[b.id].edges[a.id] = {
       direction: direction == '>' ? '<' : '>'
     }
   }
 
-  static ensureItem(graph, item) {
-    if(!graph[item.id]) {
-      graph[item.id] = item;
+  static ensureItem(nodes, item) {
+    if(!nodes[item.id]) {
+      nodes[item.id] = item;
     }
   }
 

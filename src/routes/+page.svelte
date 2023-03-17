@@ -4,6 +4,9 @@ import Navigator from '../components/Navigator.svelte';
 import Diagram from '../components/Diagram.svelte';
 import Graph from '../components/Graph.svelte';
 
+import JSONExplorer from '../components/explorers/JSON.svelte';
+import NodeByNodeExplorer from '../components/explorers/NodeByNode.svelte';
+
 let source = undefined;
 
 const onUpdate = (updatedSource) => {
@@ -18,7 +21,9 @@ const onUpdate = (updatedSource) => {
       <Editor onUpdate={onUpdate} />
     </div>
     <div class="col">
-      <Navigator source={source} />
+      <Graph source={source} let:graph={graph}>
+        <NodeByNodeExplorer graph={graph} />
+      </Graph>
     </div>
     <div class="col">
       <Diagram source={source} />
@@ -26,7 +31,9 @@ const onUpdate = (updatedSource) => {
   </div>
   <div class="row">
     <div class="col-4">
-      <Graph source={source} />
+      <Graph source={source} let:graph={graph}>
+        <JSONExplorer graph={graph} />
+      </Graph>
     </div>
     <div class="col-8">
       

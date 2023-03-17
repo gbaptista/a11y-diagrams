@@ -20,8 +20,6 @@ const renderNavigator = async () => {
   previousSource = source;
 
   graph = mermaidParser.parse(source);
-
-  setTimeout(() => { Prism.highlightAll(); }, 0);
 };
 
 onMount(async () => {
@@ -31,15 +29,6 @@ onMount(async () => {
 $: if(source !== undefined) { renderNavigator(); }
 </script>
 
-<div class="graph-source">
-  {#if graph}
-    <pre class="language-javascript"><code>{JSON.stringify(graph, false, 2)}</code></pre>
-  {/if}
-</div>
-
-<style>
-.graph-source {
-  overflow-y: scroll;
-  max-height: 30em;
-}
-</style>
+{#if graph !== undefined}
+  <slot graph={graph}></slot>
+{/if}
