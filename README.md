@@ -3,7 +3,6 @@
 - [About](#about)
 - [Development](#development)
 - [Building](#building)
-- [Technologies](#technologies)
 - [Technologies and References](#technologies-and-references)
 
 ## About
