@@ -60,7 +60,10 @@ You can preview the production build by running `npm run preview`.
 
 This project was built using the following technologies:
 
-- Language: [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), and [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  - [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics)
+  - [CSS and JavaScript accessibility best practices](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript)
 - Frontend Framework: [Svelte](https://svelte.dev)
   - [Svelte Accessibility](https://kit.svelte.dev/docs/accessibility)
 - Frontend Toolkit: [Bootstrap](https://getbootstrap.com)
