@@ -4,7 +4,7 @@
 - [Development](#development)
 - [Building](#building)
 - [Technologies](#technologies)
-- [References](#references)
+- [Technologies and References](#technologies-and-references)
 
 ## About
 
@@ -57,16 +57,18 @@ npm run build
 
 You can preview the production build by running `npm run preview`.
 
-## Technologies
+## Technologies and References
 
 This project was built using the following technologies:
 
 - Language: [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - Frontend Framework: [Svelte](https://svelte.dev)
+  - [Svelte Accessibility](https://kit.svelte.dev/docs/accessibility)
+- Frontend Toolkit: [Bootstrap](https://getbootstrap.com)
+  - [Bootstrap Accessibility](https://getbootstrap.com/docs/5.3/getting-started/accessibility/)
 - Live In-Browser Code Editor: [Monaco](https://microsoft.github.io/monaco-editor/)
+  - [Monaco Editor Accessibility Guide](https://github.com/microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide)
 - Syntax Highlighting: [Prism.js](https://prismjs.com)
-
-## References
-
-- [Mermaid Accessibility Options](https://mermaid.js.org/config/accessibility.html)
-- [More Accessible Mermaid Charts #2732](https://github.com/mermaid-js/mermaid/issues/2732)
+- Diagramming Language: [Mermaid](https://mermaid.js.org)
+  - [Mermaid Accessibility Options](https://mermaid.js.org/config/accessibility.html)
+  - [More Accessible Mermaid Charts #2732](https://github.com/mermaid-js/mermaid/issues/2732)
