@@ -10,7 +10,7 @@
 
 This proof of concept explores the development of an intuitive and screen-reader accessible interface for exploring diagrams.
 
-The objective is to define a data format to which popular diagram languages like [Mermaid](https://mermaid.js.org/syntax/flowchart.html) and [DOT](https://graphviz.org/doc/info/lang.html) can be converted, and to build an interface leveraging this accessibility-focused data format.
+The goal is to define a data format to which popular diagram languages like [Mermaid](https://mermaid.js.org/syntax/flowchart.html) and [DOT](https://graphviz.org/doc/info/lang.html) can be converted, and to build an interface leveraging this accessibility-focused data format.
 
 The current application screen provides:
 
