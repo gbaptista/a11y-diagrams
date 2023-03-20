@@ -5,6 +5,7 @@
 
   import JSONExplorer from '../components/explorers/JSON.svelte';
   import NodeByNodeExplorer from '../components/explorers/NodeByNode.svelte';
+  import LinearExplorer from '../components/explorers/LinearExplorer.svelte';
   import BreadcrumbsExplorer from '../components/explorers/Breadcrumbs.svelte';
 
   let source = undefined;
@@ -23,6 +24,9 @@
       </Graph>
     </div>
     <div class="col">
+      <Graph {source} let:graph>
+        <LinearExplorer {graph} />
+      </Graph>
       <Graph {source} let:graph>
         <NodeByNodeExplorer {graph} />
       </Graph>
