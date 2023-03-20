@@ -2,30 +2,29 @@
     export let graph;
   
     let focusNodeId = Object.keys(graph.nodes)[0];
+    let edges = graph.nodes[focusNodeId].edges;
   
     const goTo = (newFocusNodeId) => {
       focusNodeId = newFocusNodeId;
     };
 
     const handleKeyDown = (event) => {
-        const edges = Object.keys(graph.nodes[focusNodeId].edges);
-
-        switch (event.key) {
-        case 'ArrowUp':
-            goTo(edges[0]);
-            break;
-        case 'ArrowDown':
-            goTo(edges[0]);
-            break;
-        case 'ArrowLeft':
-            console.log('Seta para esquerda pressionada');
-            break;
-        case 'ArrowRight':
-            console.log('Seta para direita pressionada');
-            break;
-        default:
-            break;
-        }
+        // switch (event.key) {
+        // case 'ArrowUp':
+        //     // if(possibleNodeIndex > 0) possibleNodeIndex -= 1;
+        //     break;
+        // case 'ArrowDown':
+        //     // if(possibleNodeIndex > (0)) possibleNodeIndex += 1;
+        //     break;
+        // case 'ArrowLeft':
+        //     console.log('Seta para esquerda pressionada');
+        //     break;
+        // case 'ArrowRight':
+        //     console.log('Seta para direita pressionada');
+        //     break;
+        // default:
+        //     break;
+        // }
     }
   </script>
   
@@ -33,9 +32,13 @@
     <div class="card">
       <h5 class="card-header">Linear Explorer</h5>
       <div class="card-body">
-        <button aria-live="polite" on:keydown={handleKeyDown} tabindex="0" type="button" class="btn btn-primary">
-            {graph.nodes[focusNodeId].label}
-        </button>
+        <label for="edges">{graph.nodes[focusNodeId].label}</label>
+        <select aria-live="polite" on:keydown={handleKeyDown} id="edges" class="form-select" >
+            {#each Object.keys(edges) as edgeId}
+                <option value={edgeId}>{graph.nodes[edgeId].label}</option>
+            {/each}
+        </select>
+
       </div>
     </div>
   {/if}
