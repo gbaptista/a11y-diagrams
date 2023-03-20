@@ -9,10 +9,10 @@
   </script>
   
   {#if graph}
-    <div class="card" tabindex="0">
+    <div class="card">
       <h5 class="card-header">Linear Explorer</h5>
       <div class="card-body">
-        
+        <button tabindex="0" type="button" class="btn btn-primary">Linear Explorer</button>
       </div>
     </div>
   {/if}
