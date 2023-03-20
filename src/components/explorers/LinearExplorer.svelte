@@ -33,7 +33,7 @@
     <div class="card">
       <h5 class="card-header">Linear Explorer</h5>
       <div class="card-body">
-        <button on:keydown={handleKeyDown} tabindex="0" type="button" class="btn btn-primary">
+        <button aria-live="polite" on:keydown={handleKeyDown} tabindex="0" type="button" class="btn btn-primary">
             {graph.nodes[focusNodeId].label}
         </button>
       </div>
