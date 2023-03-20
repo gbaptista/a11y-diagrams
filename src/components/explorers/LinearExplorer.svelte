@@ -20,7 +20,6 @@
         //     // if(possibleNodeIndex > (0)) possibleNodeIndex += 1;
         //     break;
         case 'ArrowLeft':
-            console.log('ArrowLeft', previousNodeId);
             goTo(previousNodeId);
             break;
         case 'ArrowRight':
@@ -49,7 +48,6 @@
                 <option value={edgeId}>{graph.nodes[edgeId].label}</option>
             {/each}
         </select>
-        {previousNodeId}
       </div>
     </div>
   {/if}
@@ -57,10 +55,6 @@
   <style>
     .card {
       margin-top: 2em;
-    }
-  
-    button {
-      margin: 0.5em;
     }
   </style>
   
