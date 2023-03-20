@@ -3,13 +3,16 @@
   
     let focusNodeId = Object.keys(graph.nodes)[0];
     let edges = graph.nodes[focusNodeId].edges;
+
+    let selectedNode = undefined;
   
     const goTo = (newFocusNodeId) => {
       focusNodeId = newFocusNodeId;
+      edges = graph.nodes[focusNodeId].edges;
     };
 
     const handleKeyDown = (event) => {
-        // switch (event.key) {
+        switch (event.key) {
         // case 'ArrowUp':
         //     // if(possibleNodeIndex > 0) possibleNodeIndex -= 1;
         //     break;
@@ -19,12 +22,12 @@
         // case 'ArrowLeft':
         //     console.log('Seta para esquerda pressionada');
         //     break;
-        // case 'ArrowRight':
-        //     console.log('Seta para direita pressionada');
-        //     break;
-        // default:
-        //     break;
-        // }
+        case 'ArrowRight':
+           goTo(selectedNode);
+            break;
+        default:
+            break;
+        }
     }
   </script>
   
@@ -33,7 +36,7 @@
       <h5 class="card-header">Linear Explorer</h5>
       <div class="card-body">
         <label for="edges">{graph.nodes[focusNodeId].label}</label>
-        <select aria-live="polite" on:keydown={handleKeyDown} id="edges" class="form-select" >
+        <select bind:value={selectedNode} aria-live="polite" on:keydown={handleKeyDown} id="edges" class="form-select" >
             {#each Object.keys(edges) as edgeId}
                 <option value={edgeId}>{graph.nodes[edgeId].label}</option>
             {/each}
