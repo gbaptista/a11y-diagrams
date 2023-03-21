@@ -42,8 +42,8 @@
     <div class="card">
       <h5 class="card-header">Linear Explorer</h5>
       <div class="card-body">
-        <label for="edges" aria-live="polite">{graph.nodes[focusNodeId].label}</label>
-        <select bind:value={selectedNode} aria-live="polite" on:keydown={handleKeyDown} id="edges" class="form-select" >
+        <label for="edges" aria-label="{graph.nodes[focusNodeId].label} node. Select direction">{graph.nodes[focusNodeId].label}</label>
+        <select bind:value={selectedNode} on:keydown={handleKeyDown} id="edges" class="form-select" >
             {#each edgesWithoutPrevious(focusNodeId) as edgeId}
                 <option value={edgeId}>{graph.nodes[edgeId].label}</option>
             {/each}
