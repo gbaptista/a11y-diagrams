@@ -10,6 +10,7 @@
     if (isValidNextNode(newFocusNodeId)) {
       navHistory.push(newFocusNodeId);
       focusNodeId = newFocusNodeId;
+      navHistory = navHistory;
     }
   };
 
