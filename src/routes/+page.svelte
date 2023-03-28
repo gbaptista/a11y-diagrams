@@ -23,7 +23,7 @@
         <JSONExplorer {graph} />
       </Graph>
     </div>
-    <div class="col">
+    <div class="col-5">
       <Graph {source} let:graph>
         <LinearExplorer {graph} />
       </Graph>

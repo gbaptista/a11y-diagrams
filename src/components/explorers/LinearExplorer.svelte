@@ -72,7 +72,13 @@
           Press <kbd>TAB</kbd> to focus on the first element of the graph.
         </li>
         <li>
-          Press <kbd>RIGHT</kbd> to go to the next node of the graph.
+          Press <kbd>UP</kbd> or <kbd>DOWN</kbd> to explore the connections with the current focused node.
+        </li>
+        <li>
+          Press <kbd>RIGHT</kbd> to go to the selected connection.
+        </li>
+        <li>
+          Press <kbd>LEFT</kbd> to go back to the previous node.
         </li>
       </ul>
 
