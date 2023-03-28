@@ -6,7 +6,15 @@
 
   let selectedNode = undefined;
 
+  const isValidNextNode = (newFocusNodeId) => {
+    if (newFocusNodeId === null || newFocusNodeId === undefined) {
+      return false;
+    }
+    return true;
+  };
+
   const goTo = (newFocusNodeId) => {
+    console.log('goTo', newFocusNodeId);
     if (isValidNextNode(newFocusNodeId)) {
       navHistory.push(newFocusNodeId);
       focusNodeId = newFocusNodeId;
@@ -23,14 +31,6 @@
 
   const getPreviousNode = () => {
     return navHistory[navHistory.length - 2];
-  };
-
-  const isValidNextNode = (newFocusNodeId) => {
-    if (newFocusNodeId == undefined) {
-      //alert (newFocusNodeId);
-      return false;
-    }
-    return true;
   };
 
   const handleKeyDown = (event) => {
@@ -64,39 +64,40 @@
   <div class="card">
     <h5 class="card-header">Linear Explorer</h5>
     <div class="card-body">
-
       <h6>Instructions</h6>
 
       <ul>
         <li>
-          Press <kbd>TAB</kbd> to focus on the first element of the graph.
+          Use the <kbd>TAB</kbd> key to focus on the first element of the graph.
         </li>
         <li>
-          Press <kbd>UP</kbd> or <kbd>DOWN</kbd> to explore the connections with the current focused node.
+          Use the <kbd>UP</kbd> and <kbd>DOWN</kbd> arrow keys to navigate and explore the connections
+          with the current focused node.
         </li>
         <li>
-          Press <kbd>RIGHT</kbd> to go to the selected connection.
+          Use the <kbd>RIGHT</kbd> arrow key to move to the selected connection.
         </li>
         <li>
-          Press <kbd>LEFT</kbd> to go back to the previous node.
+          Use the <kbd>LEFT</kbd> arrow key to go back to the previous node.
         </li>
       </ul>
 
-      <br>
+      <br />
 
-
-      <label
-        for="edges"
-        aria-label={`${graph.nodes[focusNodeId].label} node. Select direction`}>
+      <label for="edges" aria-label={`${graph.nodes[focusNodeId].label} node. Select direction`}>
         {graph.nodes[focusNodeId].label}
       </label>
       <select bind:value={selectedNode} on:keydown={handleKeyDown} id="edges" class="form-select">
-        {#each edgesWithoutPrevious(focusNodeId) as edgeId}
-          <option value={edgeId}>{graph.nodes[edgeId].label}</option>
-        {/each}
+        {#if edgesWithoutPrevious(focusNodeId).length === 0}
+          <option value={null}>There are no more connections to explore from here.</option>
+        {:else}
+          {#each edgesWithoutPrevious(focusNodeId) as edgeId}
+            <option value={edgeId}>{graph.nodes[edgeId].label}</option>
+          {/each}
+        {/if}
       </select>
 
-      <br>
+      <br />
 
       <label for="history">Navigation History</label>
       <select id="history" class="form-select">
