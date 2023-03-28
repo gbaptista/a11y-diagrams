@@ -65,20 +65,14 @@
     <h5 class="card-header">Linear Explorer</h5>
     <div class="card-body">
 
-      <h2>Instructions</h2>
+      <h6>Instructions</h6>
 
       <ul>
         <li>
-          <button type="button" class="btn btn-outline-secondary" disabled>
-            <i class="bi bi-indent"></i>
-          </button>
-          Press tab to focus on the first element of the graph.
+          Press <kbd>TAB</kbd> to focus on the first element of the graph.
         </li>
         <li>
-          <button type="button" class="btn btn-outline-secondary" disabled>
-            <i class="bi bi-arrow-right"></i>
-          </button>
-          Press right to go to the next node of the graph.
+          Press <kbd>RIGHT</kbd> to go to the next node of the graph.
         </li>
       </ul>
 
