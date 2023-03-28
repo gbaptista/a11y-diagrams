@@ -14,7 +14,6 @@
   };
 
   const goTo = (newFocusNodeId) => {
-    console.log('goTo', newFocusNodeId);
     if (isValidNextNode(newFocusNodeId)) {
       navHistory.push(newFocusNodeId);
       focusNodeId = newFocusNodeId;
