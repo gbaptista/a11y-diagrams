@@ -64,16 +64,42 @@
   <div class="card">
     <h5 class="card-header">Linear Explorer</h5>
     <div class="card-body">
-      <label for="edges" aria-label="{graph.nodes[focusNodeId].label} node. Select direction"
-        >{graph.nodes[focusNodeId].label}</label
-      >
+
+      <h2>Instructions</h2>
+
+      <ul>
+        <li>
+          <button type="button" class="btn btn-outline-secondary" disabled>
+            <i class="bi bi-indent"></i>
+          </button>
+          Press tab to focus on the first element of the graph.
+        </li>
+        <li>
+          <button type="button" class="btn btn-outline-secondary" disabled>
+            <i class="bi bi-arrow-right"></i>
+          </button>
+          Press right to go to the next node of the graph.
+        </li>
+      </ul>
+
+      <br>
+
+
+      <label
+        for="edges"
+        aria-label={`${graph.nodes[focusNodeId].label} node. Select direction`}>
+        {graph.nodes[focusNodeId].label}
+      </label>
       <select bind:value={selectedNode} on:keydown={handleKeyDown} id="edges" class="form-select">
         {#each edgesWithoutPrevious(focusNodeId) as edgeId}
           <option value={edgeId}>{graph.nodes[edgeId].label}</option>
         {/each}
       </select>
+
+      <br>
+
       <label for="history">Navigation History</label>
-      <select id="history">
+      <select id="history" class="form-select">
         {#each navHistory as edgeId}
           <option>{graph.nodes[edgeId].label}</option>
         {/each}
